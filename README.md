@@ -25,10 +25,11 @@ script will remotely execute ansible-playbook agains component main.yml file
 - better documentation
 - dedicated playbook repository
 - build.sh and deploy.sh help file; usage 
+- add ability to deploy specific version of component
+- build / deploy multiple component in one cycle (component dependency)
 
 
 # Version
 0.0.2 (29.Jan.2020):
   - build_counter function for increment BuildNumber per new build
   - build is separated on server side in BuildNumber dirs
-  - 
