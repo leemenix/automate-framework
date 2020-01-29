@@ -1,0 +1,28 @@
+. ./.global_vars
+
+# function component_build()
+# use only initialy to create proper .current_build_number-$1
+# per component
+
+function component_build() {
+if [ -f "$FILE" ]; then
+  echo "all good"
+else
+  echo "BUILD_NUMBER=0" > $FILE
+fi
+
+}
+
+# function counter()
+# get current build number value from .current_build_number
+# and increase by one; 
+# replace old value with new one in .current_build_number
+
+function counter() {
+    . ./include/.current_build_number-$COMPONENT_NAME
+	BUILD_NUMBER_CUR=$((BUILD_NUMBER+=1))
+	echo "BUILD_NUMBER=$BUILD_NUMBER_CUR" > ./include/.current_build_number-$COMPONENT_NAME
+}
+
+component_build
+counter

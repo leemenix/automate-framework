@@ -1,0 +1,5 @@
+# vars
+export MGMT_SRV="192.168.0.42"
+export DEPLOY_USR="deploy"
+export COMPONENT_NAME="$1"
+export FILE="./include/.current_build_number-$1"
