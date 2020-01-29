@@ -1,6 +1,7 @@
 # automate-framework
 Simple combination of bash and ansible to automate home lab env, build and deployment.
 Currently working on Debian (v.10) family distro's (you will need small adaption for Ubuntu)
+All suggestions more than welcome
 
 # Usage
 
