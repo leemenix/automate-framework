@@ -1,0 +1,3 @@
+- name: demo of homelab-demo 
+  debug:
+    msg: "hello from ansible"
