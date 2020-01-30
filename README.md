@@ -28,6 +28,7 @@ script will remotely execute ansible-playbook agains component main.yml file
 - build.sh and deploy.sh help file; usage 
 - add ability to deploy specific version of component
 - build / deploy multiple component in one cycle (component dependency)
+- should be able to build Docker images on menagement server
 
 
 # Version
