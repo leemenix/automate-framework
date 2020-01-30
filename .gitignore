@@ -1,2 +1,2 @@
 hosts
-include/.current_build_number*
+.current_build_number*
