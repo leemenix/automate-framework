@@ -1,0 +1,24 @@
+- name: install APT Transport HTTPS
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common']
+    state: present
+
+- name: add docker apt-key
+  apt_key: 
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: add docker apt repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+    state: present
+    filename: 'docker'
+
+- name: install Docker
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    state: present
+    update_cache: true
+  notify:
+    - docker status  
+
