@@ -18,7 +18,14 @@ ssh $DEPLOY_USR@$MGMT_SRV \
     "sudo pip3 install ansible"
 
 ssh $DEPLOY_USR@$MGMT_SRV \
-    "ansible-playbook \
-    /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml"
+    "if [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml ]]; then
+    	ansible-playbook \
+        /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml
+     elif [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/Dockerfile ]]; then
+     	cd /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/; \
+     	docker build .
+     else
+     	echo "nither ansible or docker"
+     fi"
 
 exit 0
