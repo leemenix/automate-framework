@@ -1,0 +1,8 @@
+---
+  - hosts: localhost
+    become: yes
+    tasks:
+      # - include_role:
+      #     name: plex-media-server
+      - include_role:
+          name: emby-media-server    
