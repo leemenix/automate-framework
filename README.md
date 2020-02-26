@@ -21,10 +21,10 @@ script will pack component in .tar.gz file and upload it to remote server
 ./deploy.sh homelab-demo
 
 deployment with ansible-playbook:
-	- if there main.yml in root of component name,
+- if there main.yml in root of component name,
 	  script will remotely execute ansible-playbook agains component main.yml file 
 deployment with docker build:
-	- if there Dockerfile in root of component name, 
+- if there Dockerfile in root of component name, 
 	  scritp will remotely execute docker build . against Dockerfile
 
 # TBD
