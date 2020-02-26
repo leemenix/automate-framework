@@ -1,0 +1,23 @@
+- name: prepare dir for traefik config
+  file:
+    path: '/home/deploy/docker/traefik'
+    state: directory
+    mode: '0755'
+
+- name: prepare traefik.toml config
+  copy:
+    src: traefik.toml
+    dest: '/home/deploy/docker/traefik/traefik.toml'
+
+- name: traefik installation
+  docker_container:
+    name: 'traefik'
+    restart: yes
+    state: started
+    image: 'traefik:v1.7'
+    volumes:
+      - /home/deploy/docker/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - '8080:8080/tcp'
+      - '80:80/tcp'

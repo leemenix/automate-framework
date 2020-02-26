@@ -7,8 +7,8 @@ source ./include/.current_build_number-$COMPONENT_NAME
 #source ./.build_counter
 
 # vars
-MGMT_SRV=192.168.0.42
-DEPLOY_USR=deploy
+#MGMT_SRV=192.168.0.42
+#DEPLOY_USR=deploy
 
 # main
 ssh $DEPLOY_USR@$MGMT_SRV \
@@ -20,12 +20,12 @@ ssh $DEPLOY_USR@$MGMT_SRV \
 ssh $DEPLOY_USR@$MGMT_SRV \
     "if [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml ]]; then
     	ansible-playbook \
-        /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml
+        /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml 
      elif [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/Dockerfile ]]; then
      	cd /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/; \
      	docker build .
      else
-     	echo "nither ansible or docker"
+     	echo "neither ansible or docker"
      fi"
 
 exit 0

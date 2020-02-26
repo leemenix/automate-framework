@@ -1,0 +1,4 @@
+- name: install nfs support
+  apt:
+    name: ['libnfs-utils', 'nfs-common', 'vim']
+    state: present

@@ -1,0 +1,29 @@
+---
+- name: install emby media server
+  debug:
+    msg: "please update me"
+
+- name: run emby media server conainer
+  docker_container:
+    name: 'emby'
+    state: 'started'
+    image: 'emby/embyserver:latest'
+    restart: yes
+    state: started
+    volumes:
+      - /home/deploy/docker/emby/config:/config
+      - /home/deploy/docker/emby/media:/media
+    devices:
+      - /dev/dri:/dev/dri
+    # runtime:
+    #   - nvidia
+    ports:
+      - "8096:8096/tcp"
+      - "8920:8920/tcp"
+    env:
+      TZ: "America/New_York"
+      HOSTNAME: "docker-emby"
+      UID: "1000"
+      GID: "100"
+      GIDLIST: "100"
+
