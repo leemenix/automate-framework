@@ -1,0 +1,1 @@
+docker run --rm -it -p 8080:8080 -p 192.168.0.62:8081:8081 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0

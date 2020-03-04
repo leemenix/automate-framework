@@ -1,0 +1,11 @@
+---
+- name: install mitmproxy
+  docker_container:
+    name: mitmproxy
+    image: mitmproxy/mitmproxy
+    state: "started"
+    restart: yes
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/deploy/docker/mitmproxy/.mitmproxy:/home/mitmproxy/.mitmproxy
