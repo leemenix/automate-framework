@@ -1,0 +1,21 @@
+- name: run qbittorrent 
+  docker_container:
+    name: 'qbittorrent'
+    state: 'started'
+    image: 'linuxserver/qbittorrent'
+    restart: yes
+    volumes:
+      - "{{ user_dir }}/qbittorrent:/config"
+      - "{{ user_dir }}/Downloads/completed:/downloads"
+      - "{{ user_dir }}/shared:/shared"
+
+    ports:
+      - "3000:3000"
+      - "6881:6881"
+      - "6881:6881/udp"
+    env:
+      PUID: "{{ puid }}"
+      PGID: "{{ guid }}"
+      TZ: "{{ tz }}"
+      UMASK_SET: "002"
+      WEBUI_PORT: "3000"

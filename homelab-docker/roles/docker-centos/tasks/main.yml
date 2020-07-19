@@ -1,0 +1,21 @@
+- name: install basic tools
+  yum:
+    name: ['yum-utils', 'device-mapper-persistent-data', 'lvm2']
+    state: present
+  vars:
+    ansible_python_interpreter: /usr/bin/python2
+
+- name: add docker yum repo
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo 
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: install Docker
+  yum:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    state: present
+  vars:
+    ansible_python_interpreter: /usr/bin/python2
+  notify:
+    - docker status  
+

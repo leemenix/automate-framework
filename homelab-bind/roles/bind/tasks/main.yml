@@ -1,0 +1,28 @@
+- name: prepare directory for bind config
+  file:
+    path: "/home/deploy/docker/bind/master"
+    state: "directory"
+    mode: "755"
+
+- name: copy current named.conf bind config
+  copy:
+    src: "named.conf"
+    dest: "/home/deploy/docker/bind/named.conf"
+
+- name: copy current home.lab bind config
+  copy:
+    src: "home.lab"
+    dest: "/home/deploy/docker/bind/master/home.lab"
+
+- name: run bind docker
+  docker_container:
+    name: 'bind9'
+    state: 'started'
+    restart: 'yes'
+    image: 'homelab-bind-img:latest'
+    volumes: 
+      - '/home/deploy/docker/bind/named.conf:/etc/bind/named.conf'
+      - '/home/deploy/docker/bind/master/home.lab:/etc/bind/master/home.lab'
+    ports:
+      #- '192.168.0.62:53:53/tcp'
+      - '192.168.0.62:53:53/udp'

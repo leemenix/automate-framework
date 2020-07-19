@@ -29,6 +29,7 @@ script will pack component in .tar.gz file and upload it to remote server
 	  scritp will remotely execute docker build . against Dockerfile
 
 # TBD
+- if deploy is sucesful, than start docker instance as docker run (repo should probably have run.sh script)
 - user deploy need to be in docker group!!!
 - logging !!!
 - port scipt to work with RedHat family distro's 
@@ -46,6 +47,20 @@ script will pack component in .tar.gz file and upload it to remote server
 
 
 # Version
+0.0.4 (19.Jul.2020)
+  functions:
+  - deploy.sh now checking system version (CentOS|Debian)
+  
+  build_packages:
+  - homelab-docker installation steps for CentOS
+  - homelab-bind-img
+  - homelab-bind
+  - homelab-kodi-headless
+  - homelab-lib
+  - homelab-media-server (jackett; portainer; qbittorrent; radarr; sonarr)
+  - homelab-mitmproxy
+
+
 0.0.3 (17.Feb.2020)
   functions:
   - prototype deployment with Dockerfile and ansible-playbook

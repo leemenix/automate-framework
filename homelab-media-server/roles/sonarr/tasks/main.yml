@@ -1,0 +1,19 @@
+- name: run sonnar 
+  docker_container:
+    name: 'sonarr'
+    state: 'started'
+    image: 'linuxserver/sonarr'
+    restart: yes
+    volumes:
+      - "{{ user_dir }}/sonarr:/config"
+      - "{{ user_dir }}/Downloads/completed:/downloads"
+      - "{{ user_dir }}/media/tvshows:/tv"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "{{ user_dir }}/shared:/shared"
+
+    ports:
+      - "8989:8989"
+    env:
+      PUID: "{{ puid }}"
+      PGID: "{{ guid }}"
+      TZ: "{{ tz }}"

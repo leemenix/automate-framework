@@ -1,0 +1,16 @@
+- name: run portainer 
+  docker_container:
+    name: 'portainer'
+    state: 'started'
+    image: 'portainer/portainer'
+    command: "-H unix:///var/run/docker.sock"
+    restart: yes
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "{{ user_dir }}/portainer/data:/data"
+      - "{{ user_dir }}/shared:/shared"
+
+    ports:
+      - "9000:9000"
+    env:
+      TZ: "{{ tz }}"

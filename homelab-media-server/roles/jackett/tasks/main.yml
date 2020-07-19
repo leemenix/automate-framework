@@ -1,0 +1,17 @@
+- name: run jackett 
+  docker_container:
+    name: 'jackett'
+    state: 'started'
+    image: 'linuxserver/jackett'
+    restart: yes
+    volumes:
+      - "{{ user_dir }}/jackett:/config"
+      - "{{ user_dir }}/jackett/Downloads/completed:/downloads"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "{{ user_dir }}/shared:/shared"
+    ports:
+      - "9117:9117"
+    env:
+      PUID: "{{ puid }}"
+      PGID: "{{ guid }}"
+      TZ: "{{ tz }}"

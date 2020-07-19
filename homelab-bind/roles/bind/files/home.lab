@@ -1,0 +1,16 @@
+$TTL	3600
+@		IN		SOA		ns1.home.lab. admin.home.lab. (
+				  1		; Serial
+			   3600		; Refresh
+			    600		; Retry
+			  13600		; Expire
+			   3600 )	; Negative Cache TTL
+;
+; name server - NS records
+		IN		NS 		ns1.home.lab.
+
+; name server - A records
+ns1.home.lab.	IN		A 		192.168.0.62
+
+; 192.168.0.0/32 - A records
+freenas.home.lab.	IN	A 		192.168.0.100

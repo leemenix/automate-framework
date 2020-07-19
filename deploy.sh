@@ -12,10 +12,23 @@ source ./include/.current_build_number-$COMPONENT_NAME
 
 # main
 ssh $DEPLOY_USR@$MGMT_SRV \
-    "sudo apt install -y python3 python3-pip sudo"
+    "if ! command -v apt &> /dev/null 
+     then
+         sudo yum install -y python3 python3-pip sudo libselinux-python libselinux-python3 
+     else
+	 echo Checking system ...
+     fi"
 
 ssh $DEPLOY_USR@$MGMT_SRV \
-    "sudo pip3 install ansible"
+    "if ! command -v yum &> /dev/null
+     then
+	 sudo apt install -y python3 python3-pip sudo
+     else
+	 echo Checking system ...
+     fi"
+
+ssh $DEPLOY_USR@$MGMT_SRV \
+    "pip3 install --user ansible docker"
 
 ssh $DEPLOY_USR@$MGMT_SRV \
     "if [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml ]]; then
@@ -23,7 +36,8 @@ ssh $DEPLOY_USR@$MGMT_SRV \
         /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/main.yml 
      elif [[ -f /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/Dockerfile ]]; then
      	cd /home/$DEPLOY_USR/build/$COMPONENT_NAME/$BUILD_NUMBER/$COMPONENT_NAME/; \
-     	docker build .
+     	docker build . -t $COMPONENT_NAME:$BUILD_NUMBER
+        docker build . -t $COMPONENT_NAME:latest
      else
      	echo "neither ansible or docker"
      fi"

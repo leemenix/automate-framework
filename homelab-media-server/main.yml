@@ -1,8 +1,23 @@
 ---
   - hosts: localhost
     become: yes
+    vars:
+      user_dir: "/home/deploy/docker"
+      puid: "1000"
+      guid: "1000"
+      tz: "America/New_York"
     tasks:
       # - include_role:
       #     name: plex-media-server
       - include_role:
-          name: emby-media-server    
+          name: emby-media-server 
+      - include_role:
+          name: jackett  
+      - include_role:
+          name: radarr 
+      - include_role:
+          name: portainer
+      - include_role:
+          name: qbittorrent
+      - include_role:
+          name: sonarr

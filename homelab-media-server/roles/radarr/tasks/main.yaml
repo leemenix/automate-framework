@@ -1,0 +1,18 @@
+- name: run radarr 
+  docker_container:
+    name: 'radarr'
+    state: 'started'
+    image: 'linuxserver/radarr'
+    restart: yes
+    volumes:
+      - "{{ user_dir }}/radarr:/config"
+      - "{{ user_dir }}/media/movies:/movies"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "{{ user_dir }}/shared:/shared"
+
+    ports:
+      - "7878:7878"
+    env:
+      PUID: "{{ puid }}"
+      PGID: "{{ guid }}"
+      TZ: "{{ tz }}"

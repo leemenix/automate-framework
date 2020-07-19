@@ -1,2 +1,4 @@
 hosts
 .current_build_number*
+*~
+.*~
