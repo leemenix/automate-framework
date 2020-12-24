@@ -8,7 +8,7 @@
           msg: "{{ ansible_distribution }}" 
       - include_role:
           name: docker
-        when: ansible_distribution == 'Ubuntu'
+        when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
       
       - include_role:
           name: docker-centos
