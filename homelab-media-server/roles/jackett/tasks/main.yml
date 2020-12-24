@@ -1,3 +1,8 @@
+- name: prepare jackett config files
+  synchronize:
+    src: config
+    dest: "{{ user_dir }}/jackett"
+
 - name: run jackett 
   docker_container:
     name: 'jackett'
