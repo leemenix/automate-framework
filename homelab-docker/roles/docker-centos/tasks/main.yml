@@ -15,3 +15,6 @@
   notify:
     - docker status  
 
+- name: install python docker module with pip
+  pip:
+    name: docker
