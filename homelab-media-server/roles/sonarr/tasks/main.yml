@@ -1,3 +1,8 @@
+- name: prepare sonar config files
+  synchronize:
+    src: config/
+    dest: "{{ user_dir }}/sonarr"
+
 - name: run sonnar 
   docker_container:
     name: 'sonarr'

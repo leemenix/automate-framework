@@ -19,5 +19,5 @@
     #       name: portainer
     #   - include_role:
     #       name: qbittorrent
-    #   - include_role:
-    #       name: sonarr
+      - include_role:
+          name: sonarr
