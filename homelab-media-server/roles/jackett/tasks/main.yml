@@ -1,6 +1,6 @@
 - name: prepare jackett config files
   synchronize:
-    src: config
+    src: config/Jackett
     dest: "{{ user_dir }}/jackett"
 
 - name: run jackett 
