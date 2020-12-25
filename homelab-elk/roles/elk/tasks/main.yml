@@ -19,3 +19,19 @@
       - name: elastic
     env:
       discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+
+- name: run logstash continer
+  docker_container:
+    name: logstash
+    image: docker.elastic.co/elasticsearch/logstash:{{ elk_version }}
+    ports:
+      - "5044:5044"
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    env:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - name: elastic
+      
