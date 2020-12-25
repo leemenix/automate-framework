@@ -43,7 +43,14 @@
     image: docker.elastic.co/kibana/kibana:{{ elk_version }}
     ports:
       - "5601:5601"
-    volumes:
-      - "{{ role_path }}/files/kibana/config:/usr/share/kibana/config"
+#    volumes:
+#      - "{{ role_path }}/files/kibana/config:/usr/share/kibana/config"
     networks:
       - name: elastic
+
+- name: create kibana index
+  shell: | 
+            curl -XPOST -D- 'http://kibana.home.lab:5601/api/saved_objects/index-pattern' \
+              -H 'Content-Type: application/json' \
+              -H 'kbn-version: 7.10.1' \
+              -d '{"attributes":{"title":"logstash-*","timeFieldName":"@timestamp"}}'
