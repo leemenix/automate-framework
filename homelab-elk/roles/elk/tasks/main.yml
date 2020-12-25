@@ -5,7 +5,6 @@
 - name: create elk network
   docker_network:
     name: elastic
-    driver: overlay
 
 - name: run elasticsearch container
   docker_container:
