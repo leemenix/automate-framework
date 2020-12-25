@@ -5,6 +5,7 @@
 - name: create elk network
   docker_network:
     name: elastic
+    driver: overlay
 
 - name: run elasticsearch container
   docker_container:
@@ -24,7 +25,7 @@
 - name: run logstash continer
   docker_container:
     name: logstash
-    image: docker.elastic.co/elasticsearch/logstash:{{ elk_version }}
+    image: docker.elastic.co/logstash/logstash:{{ elk_version }}
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
@@ -34,4 +35,12 @@
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - name: elastic
-      
+
+- name: run kibana container
+  docker_container:
+    name: kibana
+    image: docker.elastic.co/kibana/kibana:{{ elk_version }}
+    ports:
+      - "5601:5601"
+    networks:
+      - name: elastic
