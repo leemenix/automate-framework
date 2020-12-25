@@ -5,4 +5,4 @@
     elk_version: "7.10.1"
   tasks:
     - include_role:
-        name: elasticsearch
+        name: elk
