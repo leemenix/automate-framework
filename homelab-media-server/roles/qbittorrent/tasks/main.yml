@@ -1,3 +1,8 @@
+- name: prepare qBittorrent config files
+  synchronize:
+    src: config/qBittorrent
+    dest: "{{ user_dir }}/jackett"
+
 - name: run qbittorrent 
   docker_container:
     name: 'qbittorrent'

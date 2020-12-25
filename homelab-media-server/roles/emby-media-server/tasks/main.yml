@@ -11,8 +11,9 @@
     restart: yes
     state: started
     volumes:
-      - /home/deploy/docker/emby/config:/config
-      - /home/deploy/docker/emby/media:/media
+      - "{{ user_dir }}/emby/config:/config"
+      - "{{ user_dir }}/emby/media/movie:/media"
+      - "{{ user_dir }}/emby/media/tv_show:/media"
     devices:
       - /dev/dri:/dev/dri
     # runtime:
