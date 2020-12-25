@@ -43,5 +43,7 @@
     image: docker.elastic.co/kibana/kibana:{{ elk_version }}
     ports:
       - "5601:5601"
+    volumes:
+      - "{{ role_path }}/files/kibana/config:/usr/share/kibana/config"
     networks:
       - name: elastic
