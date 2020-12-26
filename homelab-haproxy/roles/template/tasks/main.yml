@@ -1,0 +1,9 @@
+- name: prepare haproxy config
+  template:
+    src: haproxy.cfg.j2
+    dest: "{{ playbook_dir }}/roles/haproxy/files/haproxy.cfg"
+
+- name: prepare haproxy installation
+  template:
+    src: main.yml.j2
+    dest: "{{ playbook_dir }}/roles/haproxy/tasks/main.yml"
