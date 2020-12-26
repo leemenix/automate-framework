@@ -1,7 +1,7 @@
 - name: install haproxy
-{% if ansible_distirbution == "Debian" %}
+{% if ansible_distribution == "Debian" %}
   apt:
-{% elif ansible_distirbution == "CentOS" %}
+{% elif ansible_distribution == "CentOS" %}
   yum:
 {% endif %}
     name: ['haproxy']
