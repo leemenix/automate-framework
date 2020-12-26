@@ -9,7 +9,6 @@
     state: 'started'
     image: 'emby/embyserver:latest'
     restart: yes
-    state: started
     volumes:
       - "{{ user_dir }}/emby/config:/config"
       - "{{ user_dir }}/emby/media/movie:/media"

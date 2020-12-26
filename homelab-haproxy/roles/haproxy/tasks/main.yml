@@ -9,6 +9,8 @@
     image: haproxy:2.3
     state: started
     restart: yes
+    ports:
+      - "80:80"
     # volumes:
     #   - "{{ playbook_dir }}/roles/haproxy/files:/usr/local/etc/haproxy:ro"
     
