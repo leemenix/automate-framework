@@ -8,7 +8,7 @@
     state: present
 
 - name: copy haproxy config
-  file:
+  synchronize:
     src: haproxy.cfg
     dest: /etc/haproxy/haproxy.cfg
 
