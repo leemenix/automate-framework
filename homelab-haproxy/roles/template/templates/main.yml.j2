@@ -3,6 +3,6 @@
   apt:
 {% elif ansible_distirbution == "CentOS" %}
   yum:
-{% end if % }
+{% endif % }
     name: ['haproxy']
     state: present
