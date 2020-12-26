@@ -3,4 +3,7 @@
   become: yes
   tasks:
     - include_role:
-        name: haproxy
+        name: template
+
+    # - include_role:
+    #     name: haproxy
