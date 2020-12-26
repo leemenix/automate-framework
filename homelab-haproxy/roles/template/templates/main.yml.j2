@@ -6,3 +6,11 @@
 {% endif %}
     name: ['haproxy']
     state: present
+
+- name: copy haproxy config
+  file:
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+
+- name: restart haproxy
+  shell: systemctl restart haproxy
