@@ -7,6 +7,8 @@
   docker_container:
     name: haproxy
     image: haproxy:2.3
+    state: started
+    restart: yes
     # volumes:
     #   - "{{ playbook_dir }}/roles/haproxy/files:/usr/local/etc/haproxy:ro"
     
