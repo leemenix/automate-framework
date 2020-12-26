@@ -11,13 +11,13 @@
       #     name: plex-media-server
       - include_role:
           name: emby-media-server 
-      - include_role:
-          name: jackett  
+      # - include_role:
+      #     name: jackett  
     #   - include_role:
     #       name: radarr 
     #   - include_role:
     #       name: portainer
-      - include_role:
-          name: qbittorrent
-      - include_role:
-          name: sonarr
+      # - include_role:
+      #     name: qbittorrent
+      # - include_role:
+      #     name: sonarr

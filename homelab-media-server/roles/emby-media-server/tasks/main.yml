@@ -1,7 +1,4 @@
 ---
-- name: install emby media server
-  debug:
-    msg: "please update me"
 
 - name: run emby media server conainer
   docker_container:
@@ -11,8 +8,8 @@
     restart: yes
     volumes:
       - "{{ user_dir }}/emby/config:/config"
-      - "{{ user_dir }}/emby/media/movie:/media"
-      - "{{ user_dir }}/emby/media/tv_show:/media"
+      # - "{{ user_dir }}/emby/media/movie:/media"
+      # - "{{ user_dir }}/emby/media/tv_show:/media"
     devices:
       - /dev/dri:/dev/dri
     # runtime:
@@ -21,9 +18,8 @@
       - "8096:8096/tcp"
       - "8920:8920/tcp"
     env:
-      TZ: "America/New_York"
+      # TZ: "America/New_York"
       HOSTNAME: "docker-emby"
       UID: "1000"
       GID: "100"
       GIDLIST: "100"
-
