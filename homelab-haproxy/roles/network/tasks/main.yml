@@ -1,7 +1,4 @@
 - name: setup network
-  network_ether_interfaces:
-    - device: ens192
-      bootproto: static
-      cidr: 192.168.0.100/24
-      gateway: 192.168.0.1
-      dns-nameserver: ['10.10.10.2','192.168.0.1','8.8.8.8']
+  debug:
+    msg: "tbd. just copy static config"
+

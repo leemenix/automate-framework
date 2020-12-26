@@ -24,26 +24,16 @@ defaults
 frontend emby_frontend
     # a frontend that accepts requests from clients
     bind *:8096
-    #bind 10.0.0.3:443 ssl crt /etc/ssl/certs/mysite.pem
-    #http-request redirect scheme https unless { ssl_fc }
-    #use_backend api_servers if { path_beg /api/ }
     default_backend emby_server
 
 backend emby_server
     # servers that fulfill the requests
-    #balance roundrobin
-    #cookie SERVERUSED insert indirect nocache
-    #option httpchk HEAD /
     default-server check maxconn 20
-    server server1 10.10.10.55:8096 cookie server1
-    {# server server2 10.0.1.4:80 cookie server2 #}
+    server server1 emby-media.home.lab:8096
 
 frontend portainer_frontend
     # a frontend that accepts requests from clients
     bind *:9000
-    #bind 10.0.0.3:443 ssl crt /etc/ssl/certs/mysite.pem
-    #http-request redirect scheme https unless { ssl_fc }
-    #use_backend api_servers if { path_beg /api/ }
     default_backend portainer_server
 
 backend portainer_server
