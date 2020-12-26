@@ -7,3 +7,5 @@
   template:
     src: main.yml.j2
     dest: "{{ playbook_dir }}/roles/haproxy/tasks/main.yml"
+
+

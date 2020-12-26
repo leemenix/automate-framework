@@ -6,4 +6,7 @@
         name: template
 
     - include_role:
+        name: network
+
+    - include_role:
         name: haproxy
