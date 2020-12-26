@@ -2,3 +2,11 @@
   template:
     src: haproxy.cfg.j2
     dest: "{{ playbook_dir }}/roles/haproxy/files/haproxy.cfg"
+
+- name: run haproxy
+  docker_container:
+    name: haproxy
+    image: haproxy:2.3
+    # volumes:
+    #   - "{{ playbook_dir }}/roles/haproxy/files:/usr/local/etc/haproxy:ro"
+    
