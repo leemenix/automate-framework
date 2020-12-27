@@ -39,3 +39,11 @@ frontend portainer_frontend
 backend portainer_server
     default-server check maxconn 20
     server server1 10.10.10.55:9000
+
+frontend pfsense_frontend
+    bind *:10001
+    default_backend pfsense_backend
+
+backend pfsense_backend
+    default-server check maxconn 20
+    server server1 10.10.10.2:80    
