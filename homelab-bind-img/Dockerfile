@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER leemenix@protonmail.com
+LABEL user: leemenix@protonmail.com
 
 RUN apk --update add bind
 
